@@ -92,22 +92,38 @@ pipeline {
                 stage('Build Frontend Image') {
                     steps {
                         dir('Frontend') {
-                            echo 'Building frontend Docker image...'
-                            sh """
-                                docker build -t ${DOCKER_IMAGE_FRONTEND}:${DOCKER_TAG} .
-                                docker tag ${DOCKER_IMAGE_FRONTEND}:${DOCKER_TAG} ${DOCKER_IMAGE_FRONTEND}:${DOCKER_LATEST}
-                            """
+                            script {
+                                try {
+                                    echo '🔨 Building frontend Docker image...'
+                                    sh """
+                                        docker build -t ${DOCKER_IMAGE_FRONTEND}:${DOCKER_TAG} . || exit 1
+                                        docker tag ${DOCKER_IMAGE_FRONTEND}:${DOCKER_TAG} ${DOCKER_IMAGE_FRONTEND}:${DOCKER_LATEST}
+                                        echo '✅ Frontend image built successfully!'
+                                    """
+                                } catch (Exception e) {
+                                    echo "❌ Frontend Docker build failed: ${e.message}"
+                                    error("Frontend build failed")
+                                }
+                            }
                         }
                     }
                 }
                 stage('Build Backend Image') {
                     steps {
                         dir('Backend') {
-                            echo 'Building backend Docker image...'
-                            sh """
-                                docker build -t ${DOCKER_IMAGE_BACKEND}:${DOCKER_TAG} .
-                                docker tag ${DOCKER_IMAGE_BACKEND}:${DOCKER_TAG} ${DOCKER_IMAGE_BACKEND}:${DOCKER_LATEST}
-                            """
+                            script {
+                                try {
+                                    echo '🔨 Building backend Docker image...'
+                                    sh """
+                                        docker build -t ${DOCKER_IMAGE_BACKEND}:${DOCKER_TAG} . || exit 1
+                                        docker tag ${DOCKER_IMAGE_BACKEND}:${DOCKER_TAG} ${DOCKER_IMAGE_BACKEND}:${DOCKER_LATEST}
+                                        echo '✅ Backend image built successfully!'
+                                    """
+                                } catch (Exception e) {
+                                    echo "❌ Backend Docker build failed: ${e.message}"
+                                    error("Backend build failed")
+                                }
+                            }
                         }
                     }
                 }
