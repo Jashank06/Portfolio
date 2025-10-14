@@ -168,19 +168,12 @@ pipeline {
         }
         success {
             echo 'Pipeline completed successfully!'
-            emailext(
-                subject: "Jenkins Build #${BUILD_NUMBER} - SUCCESS",
-                body: "Build completed successfully!\n\nBuild URL: ${BUILD_URL}",
-                to: 'your-email@example.com'
-            )
+            echo "Build URL: ${BUILD_URL}"
         }
         failure {
             echo 'Pipeline failed!'
-            emailext(
-                subject: "Jenkins Build #${BUILD_NUMBER} - FAILED",
-                body: "Build failed!\n\nBuild URL: ${BUILD_URL}",
-                to: 'your-email@example.com'
-            )
+            echo "Build URL: ${BUILD_URL}"
+            echo 'Check console output for details.'
         }
     }
 }
