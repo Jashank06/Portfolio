@@ -1,13 +1,13 @@
 # Build stage
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install all dependencies (including devDependencies needed for build)
-RUN npm ci
+# Install all dependencies with fallback
+RUN npm install --legacy-peer-deps || npm install --force
 
 # Copy application files
 COPY . .
