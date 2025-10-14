@@ -76,7 +76,7 @@ const Hero = () => {
 
       {/* Main Content Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 lg:pb-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Left Side - Text Content - Slide from Left */}
           <motion.div
@@ -107,7 +107,7 @@ const Hero = () => {
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ delay: 0.8, duration: 1.8 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-normal text-black"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-black"
               >
                 <TypewriterGlitch 
                   text="Hello" 
@@ -119,7 +119,7 @@ const Hero = () => {
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ delay: 1.5, duration: 1.8 }}
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-black leading-tight"
               >
                 I'm Jashank
               </motion.h1>
@@ -135,7 +135,7 @@ const Hero = () => {
                 type: "spring",
                 stiffness: 30
               }}
-              className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-xl"
+              className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-xl"
             >
               <TypewriterGlitch 
                 text="Welcome to my creative space! I'm Jashank, A passionate Full Stack Developer on a mission to transform ideas into seamless digital design."
@@ -162,7 +162,7 @@ const Hero = () => {
                 onClick={() => {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-10 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-md font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-6 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-md font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Schedule A Meeting
               </motion.button>
@@ -178,9 +178,9 @@ const Hero = () => {
                 type: "spring",
                 stiffness: 80
               }}
-              className="flex items-center gap-4 pt-6"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 pt-6"
             >
-              <span className="text-black font-medium text-base">Follow Me On:</span>
+              <span className="text-black font-medium text-sm sm:text-base">Follow Me On:</span>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -193,7 +193,7 @@ const Hero = () => {
                     transition={{ delay: 0.9 + index * 0.1, duration: 0.4 }}
                     whileHover={{ scale: 1.15, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-11 h-11 rounded-full bg-amber-100 flex items-center justify-center text-amber-500 hover:bg-amber-500 hover:text-white transition-all duration-300"
+                    className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-amber-100 flex items-center justify-center text-amber-500 hover:bg-amber-500 hover:text-white transition-all duration-300"
                     aria-label={social.label}
                   >
                     <social.icon size={20} />
@@ -215,10 +215,10 @@ const Hero = () => {
               stiffness: 50,
               damping: 15
             }}
-            className="relative flex justify-center items-center"
+            className="relative flex justify-center items-center order-first lg:order-last mb-8 lg:mb-0"
           >
             {/* Profile Image */}
-            <div className="relative w-full max-w-lg">
+            <div className="relative w-64 sm:w-80 md:w-96 lg:w-full lg:max-w-lg">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -228,7 +228,7 @@ const Hero = () => {
                 <img
                   src={ProfileImage}
                   alt="Jashank - Full Stack Developer"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover rounded-full lg:rounded-none"
                 />
               </motion.div>
             </div>
@@ -244,17 +244,17 @@ const Hero = () => {
         className="absolute bottom-0 left-0 right-0 bg-black text-white py-8 z-30"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1 + index * 0.1, duration: 0.5 }}
-                className="flex items-center justify-center gap-3"
+                className="flex items-center justify-center gap-2 sm:gap-3 text-center"
               >
-                <BsStars className="text-amber-400 text-2xl flex-shrink-0" />
-                <span className="font-medium text-base lg:text-lg text-white">
+                <BsStars className="text-amber-400 text-xl sm:text-2xl flex-shrink-0" />
+                <span className="font-medium text-sm sm:text-base lg:text-lg text-white">
                   {feature.text}
                 </span>
               </motion.div>

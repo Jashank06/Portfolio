@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaExternalLinkAlt, FaGithub, FaCode } from 'react-icons/fa';
@@ -21,10 +21,9 @@ const Projects = () => {
     threshold: 0.1,
   });
 
-  const [hoveredProject, setHoveredProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState([0, 0, 0]);
 
-  const projects = [
+  const projects = useMemo(() => [
     {
       title: 'E-Learning Platform',
       type: 'College Project',
@@ -52,7 +51,7 @@ const Projects = () => {
       github: 'https://github.com/Jashank06/Portfolio.git',
       live: '#home',
     },
-  ];
+  ], []);
 
   // Auto-slide images every 3 seconds
   useEffect(() => {
@@ -77,22 +76,22 @@ const Projects = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Section Title */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full mb-4"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full mb-4"
             >
-              <FaCode className="text-amber-600" />
-              <span className="text-amber-700 font-semibold text-sm">MY PORTFOLIO</span>
+              <FaCode className="text-amber-600 text-sm sm:text-base" />
+              <span className="text-amber-700 font-semibold text-xs sm:text-sm">MY PORTFOLIO</span>
             </motion.div>
             
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-5xl md:text-6xl font-bold text-black mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4"
             >
               Featured Projects
             </motion.h2>
@@ -101,14 +100,14 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-gray-600 text-lg max-w-2xl mx-auto"
+              className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto"
             >
               Showcasing my best work in web development and design
             </motion.p>
           </div>
 
           {/* Projects Grid */}
-          <div className="space-y-16">
+          <div className="space-y-12 lg:space-y-16">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -119,11 +118,9 @@ const Projects = () => {
                   duration: 0.8,
                   ease: "easeOut",
                 }}
-                onMouseEnter={() => setHoveredProject(index)}
-                onMouseLeave={() => setHoveredProject(null)}
                 className="group relative"
               >
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
                   {/* Project Image with 3D Effect and Auto Slider */}
                   <motion.div
                     whileHover={{ 
@@ -177,16 +174,16 @@ const Projects = () => {
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
                       {/* Action Buttons Overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 backdrop-blur-sm">
+                      <div className="absolute inset-0 flex items-center justify-center gap-3 sm:gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 backdrop-blur-sm">
                         <motion.a
                           href={project.live}
                           target={project.live === '#home' ? '_self' : '_blank'}
                           rel={project.live === '#home' ? '' : 'noopener noreferrer'}
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-14 h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/50 transition-shadow"
+                          className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/50 transition-shadow"
                         >
-                          <FaExternalLinkAlt size={20} />
+                          <FaExternalLinkAlt size={16} className="sm:text-xl" />
                         </motion.a>
                         <motion.a
                           href={project.github}
@@ -194,32 +191,32 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1, rotate: -5 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-14 h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/50 transition-shadow"
+                          className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/50 transition-shadow"
                         >
-                          <FaGithub size={24} />
+                          <FaGithub size={18} className="sm:text-2xl" />
                         </motion.a>
                       </div>
                       
                       {/* Decorative Corner Element */}
-                      <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg z-10">
-                        <BsStars className="text-white text-xl" />
+                      <div className="absolute top-2 sm:top-4 right-2 sm:right-4 w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg z-10">
+                        <BsStars className="text-white text-lg sm:text-xl" />
                       </div>
                     </div>
                   </motion.div>
 
                   {/* Project Content */}
                   <motion.div
-                    className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+                    className={`space-y-4 lg:space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
                   >
                     {/* Project Type Badge */}
                     <motion.div
                       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.6 + index * 0.2, duration: 0.6 }}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full"
+                      className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full"
                     >
                       <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
-                      <span className="text-amber-700 font-semibold text-sm uppercase tracking-wide">
+                      <span className="text-amber-700 font-semibold text-xs sm:text-sm uppercase tracking-wide">
                         {project.type}
                       </span>
                     </motion.div>
@@ -229,7 +226,7 @@ const Projects = () => {
                       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.7 + index * 0.2, duration: 0.6 }}
-                      className="text-4xl md:text-5xl font-bold text-black group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300"
+                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-black group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300"
                     >
                       {project.title}
                     </motion.h3>
@@ -239,9 +236,9 @@ const Projects = () => {
                       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.8 + index * 0.2, duration: 0.6 }}
-                      className="relative p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 group-hover:border-amber-400 transition-colors duration-300 shadow-lg"
+                      className="relative p-4 sm:p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 group-hover:border-amber-400 transition-colors duration-300 shadow-lg"
                     >
-                      <p className="text-gray-700 leading-relaxed text-lg">
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                         {project.description}
                       </p>
                       
@@ -254,7 +251,7 @@ const Projects = () => {
                       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.9 + index * 0.2, duration: 0.6 }}
-                      className="flex flex-wrap gap-3"
+                      className="flex flex-wrap gap-2 sm:gap-3"
                     >
                       {project.tags.map((tag, tagIndex) => (
                         <motion.span
@@ -263,7 +260,7 @@ const Projects = () => {
                           animate={inView ? { opacity: 1, scale: 1 } : {}}
                           transition={{ delay: 1 + index * 0.2 + tagIndex * 0.1, duration: 0.4 }}
                           whileHover={{ scale: 1.1, y: -2 }}
-                          className="px-4 py-2 bg-white border-2 border-amber-200 rounded-full text-sm font-semibold text-amber-700 hover:bg-gradient-to-r hover:from-amber-400 hover:to-orange-500 hover:text-white hover:border-transparent transition-all duration-300 shadow-md cursor-pointer"
+                          className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white border-2 border-amber-200 rounded-full text-xs sm:text-sm font-semibold text-amber-700 hover:bg-gradient-to-r hover:from-amber-400 hover:to-orange-500 hover:text-white hover:border-transparent transition-all duration-300 shadow-md cursor-pointer"
                         >
                           {tag}
                         </motion.span>
@@ -275,7 +272,7 @@ const Projects = () => {
                       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 1.1 + index * 0.2, duration: 0.6 }}
-                      className="flex gap-4 pt-4"
+                      className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
                     >
                       <motion.a
                         href={project.live}
@@ -283,9 +280,9 @@ const Projects = () => {
                         rel={project.live === '#home' ? '' : 'noopener noreferrer'}
                         whileHover={{ scale: 1.05, x: 5 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:shadow-amber-300/50 transition-all duration-300"
+                        className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:shadow-amber-300/50 transition-all duration-300 text-sm sm:text-base"
                       >
-                        <FaExternalLinkAlt />
+                        <FaExternalLinkAlt className="text-sm sm:text-base" />
                         <span>View Live</span>
                       </motion.a>
                       <motion.a
@@ -294,9 +291,9 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05, x: 5 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-amber-400 text-amber-600 rounded-full font-semibold hover:bg-amber-50 transition-all duration-300 shadow-lg"
+                        className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white border-2 border-amber-400 text-amber-600 rounded-full font-semibold hover:bg-amber-50 transition-all duration-300 shadow-lg text-sm sm:text-base"
                       >
-                        <FaGithub />
+                        <FaGithub className="text-sm sm:text-base" />
                         <span>Source Code</span>
                       </motion.a>
                     </motion.div>
@@ -304,7 +301,7 @@ const Projects = () => {
                 </div>
 
                 {/* Project Number Watermark */}
-                <div className="absolute -top-8 -right-4 text-[150px] font-bold text-amber-100 opacity-50 pointer-events-none select-none">
+                <div className="absolute -top-6 lg:-top-8 -right-2 lg:-right-4 text-[100px] lg:text-[150px] font-bold text-amber-100 opacity-50 pointer-events-none select-none">
                   0{index + 1}
                 </div>
               </motion.div>

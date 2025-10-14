@@ -70,10 +70,10 @@ const Footer = () => {
           whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl hover:shadow-amber-400/50 transition-all duration-300"
+          className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-50 w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl hover:shadow-amber-400/50 transition-all duration-300"
           style={{ opacity }}
         >
-          <FaArrowUp className="text-xl" />
+          <FaArrowUp className="text-lg sm:text-xl" />
         </motion.button>
       )}
 
@@ -89,39 +89,39 @@ const Footer = () => {
 
         <div className="relative z-10">
           {/* Main Footer Content */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
               
               {/* Brand Section */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-2 space-y-6"
+                className="lg:col-span-2 space-y-4 lg:space-y-6"
               >
                 {/* Logo */}
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
-                    <span className="text-2xl font-bold text-white">J</span>
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <span className="text-xl sm:text-2xl font-bold text-white">J</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                    <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                       Jashank Kumar
                     </h3>
-                    <p className="text-gray-400 text-sm">Full Stack Developer</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">Full Stack Developer</p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-300 leading-relaxed max-w-md">
+                <p className="text-gray-300 leading-relaxed max-w-md text-sm sm:text-base">
                   Passionate full-stack developer creating innovative digital solutions. 
                   Specialized in modern web technologies and user-centric design.
                 </p>
 
                 {/* Social Links */}
-                <div className="flex items-center space-x-4">
-                  <span className="text-gray-400 text-sm font-medium">Follow me:</span>
-                  <div className="flex space-x-3">
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                  <span className="text-gray-400 text-xs sm:text-sm font-medium">Follow me:</span>
+                  <div className="flex space-x-2 sm:space-x-3">
                     {socialLinks.map((social, index) => (
                       <motion.a
                         key={social.label}
@@ -133,9 +133,9 @@ const Footer = () => {
                         transition={{ delay: index * 0.1, duration: 0.4 }}
                         whileHover={{ scale: 1.2, y: -3 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`w-11 h-11 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-amber-400 flex items-center justify-center text-gray-400 ${social.color} transition-all duration-300 group`}
+                        className={`w-9 sm:w-11 h-9 sm:h-11 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-amber-400 flex items-center justify-center text-gray-400 ${social.color} transition-all duration-300 group`}
                       >
-                        <social.icon className="text-lg group-hover:scale-110 transition-transform duration-200" />
+                        <social.icon className="text-base sm:text-lg group-hover:scale-110 transition-transform duration-200" />
                       </motion.a>
                     ))}
                   </div>
@@ -147,14 +147,14 @@ const Footer = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="space-y-6"
+                className="space-y-4 lg:space-y-6"
               >
-                <h4 className="text-xl font-bold text-white relative">
+                <h4 className="text-lg sm:text-xl font-bold text-white relative">
                   Quick Links
                   <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full"></div>
                 </h4>
                 
-                <nav className="space-y-3">
+                <nav className="space-y-2 sm:space-y-3">
                   {quickLinks.map((link, index) => (
                     <motion.a
                       key={link.label}
@@ -163,9 +163,9 @@ const Footer = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1, duration: 0.4 }}
                       whileHover={{ x: 5 }}
-                      className="block text-gray-400 hover:text-amber-400 transition-all duration-300 group flex items-center"
+                      className="block text-gray-400 hover:text-amber-400 transition-all duration-300 group flex items-center text-sm sm:text-base"
                     >
-                      <BsArrowRight className="opacity-0 group-hover:opacity-100 mr-2 text-sm transition-opacity duration-200" />
+                      <BsArrowRight className="opacity-0 group-hover:opacity-100 mr-2 text-xs sm:text-sm transition-opacity duration-200" />
                       <span>{link.label}</span>
                     </motion.a>
                   ))}
@@ -177,14 +177,14 @@ const Footer = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="space-y-6"
+                className="space-y-4 lg:space-y-6"
               >
-                <h4 className="text-xl font-bold text-white relative">
+                <h4 className="text-lg sm:text-xl font-bold text-white relative">
                   Get In Touch
                   <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full"></div>
                 </h4>
                 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {contactInfo.map((info, index) => (
                     <motion.div
                       key={info.label}
@@ -195,12 +195,12 @@ const Footer = () => {
                     >
                       {info.label === 'Location' ? (
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0">
-                            <info.icon className="text-white text-sm" />
+                          <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0">
+                            <info.icon className="text-white text-xs sm:text-sm" />
                           </div>
                           <div>
                             <p className="text-gray-400 text-xs uppercase tracking-wide">{info.label}</p>
-                            <p className="text-white font-medium">{info.value}</p>
+                            <p className="text-white font-medium text-sm sm:text-base">{info.value}</p>
                           </div>
                         </div>
                       ) : (
@@ -213,16 +213,16 @@ const Footer = () => {
                               copyToClipboard(info.value, info.label);
                             }
                           }}
-                          className="flex items-center space-x-3 w-full text-left p-2 rounded-lg hover:bg-gray-800/50 transition-colors duration-200 cursor-pointer"
+                          className="flex items-center space-x-3 w-full text-left p-1.5 sm:p-2 rounded-lg hover:bg-gray-800/50 transition-colors duration-200 cursor-pointer"
                         >
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
-                            <info.icon className="text-white text-sm" />
+                          <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+                            <info.icon className="text-white text-xs sm:text-sm" />
                           </div>
                           <div className="flex-1">
                             <p className="text-gray-400 text-xs uppercase tracking-wide">{info.label}</p>
-                            <p className="text-white font-medium group-hover:text-amber-400 transition-colors duration-200">{info.value}</p>
+                            <p className="text-white font-medium group-hover:text-amber-400 transition-colors duration-200 text-sm sm:text-base">{info.value}</p>
                           </div>
-                          <div className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-full bg-gray-700 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                             {copiedField === info.label ? (
                               <FaCheck className="text-green-400 text-xs" />
                             ) : (
@@ -240,7 +240,7 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="border-t border-gray-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
               <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 
                 {/* Copyright */}
@@ -248,7 +248,7 @@ const Footer = () => {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="flex items-center space-x-2 text-gray-400"
+                  className="flex flex-wrap items-center justify-center space-x-1 sm:space-x-2 text-gray-400 text-sm sm:text-base text-center"
                 >
                   <span>© {currentYear} Jashank Kumar. Crafted with</span>
                   <motion.div
@@ -270,9 +270,9 @@ const Footer = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={scrollToTop}
-                  className="flex items-center space-x-2 text-gray-400 hover:text-amber-400 transition-colors duration-300 group"
+                  className="flex items-center space-x-1 sm:space-x-2 text-gray-400 hover:text-amber-400 transition-colors duration-300 group"
                 >
-                  <span className="text-sm font-medium">Back to top</span>
+                  <span className="text-xs sm:text-sm font-medium">Back to top</span>
                   <motion.div
                     animate={{ y: [0, -2, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}

@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Backend Development Service
+  backend-dev:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.dev
+    container_name: portfolio-backend-dev
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=development
+      - PORT=5001
+    env_file:
+      - ./Backend/.env
+    networks:
+      - portfolio-network-dev
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  # Frontend Development Service
+  frontend-dev:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.dev
+    container_name: portfolio-frontend-dev
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    depends_on:
+      - backend-dev
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:5001
+      - CHOKIDAR_USEPOLLING=true
+      - WDS_SOCKET_PORT=0
+    networks:
+      - portfolio-network-dev
+    volumes:
+      - ./Frontend:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    command: npm start
+
+networks:
+  portfolio-network-dev:
+    driver: bridge

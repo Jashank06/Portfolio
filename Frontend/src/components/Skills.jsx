@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaDatabase, FaPython } from 'react-icons/fa';
-import { SiKubernetes, SiMongodb, SiExpress, SiNextdotjs, SiJenkins, SiMysql, SiJavascript, SiTypescript, SiTailwindcss, SiPostgresql } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaAws, FaDocker } from 'react-icons/fa';
+import { SiKubernetes, SiMongodb, SiExpress, SiNextdotjs, SiJenkins, SiMysql, SiJavascript, SiTypescript } from 'react-icons/si';
 import CardSwap, { Card } from './CardSwap';
 
 const Skills = () => {
@@ -10,6 +10,63 @@ const Skills = () => {
     triggerOnce: true,
     threshold: 0.15,
   });
+
+  const [screenSize, setScreenSize] = useState({ width: 1200, height: 800 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    if (typeof window !== 'undefined') {
+      setScreenSize({ width: window.innerWidth, height: window.innerHeight });
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  const getResponsiveValues = () => {
+    const { width } = screenSize;
+    if (width < 640) {
+      return {
+        cardWidth: Math.min(width - 40, 300),
+        cardHeight: 360,
+        containerHeight: '400px',
+        cardDistance: 8,
+        verticalDistance: 10,
+        skewAmount: 1.5
+      };
+    } else if (width < 768) {
+      return {
+        cardWidth: 320,
+        cardHeight: 380,
+        containerHeight: '420px',
+        cardDistance: 12,
+        verticalDistance: 15,
+        skewAmount: 2
+      };
+    } else if (width < 1024) {
+      return {
+        cardWidth: 300,
+        cardHeight: 390,
+        containerHeight: '430px',
+        cardDistance: 15,
+        verticalDistance: 18,
+        skewAmount: 2.5
+      };
+    } else {
+      return {
+        cardWidth: 320,
+        cardHeight: 400,
+        containerHeight: '450px',
+        cardDistance: 15,
+        verticalDistance: 20,
+        skewAmount: 3
+      };
+    }
+  };
+
+  const responsive = getResponsiveValues();
 
   const skillCategories = [
     {
@@ -57,12 +114,12 @@ const Skills = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Section Title */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 lg:mb-16">
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl md:text-6xl font-bold text-black mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4"
             >
               Skills & Expertise
             </motion.h2>
@@ -70,7 +127,7 @@ const Skills = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-gray-600 text-lg max-w-2xl mx-auto mb-8"
+              className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto mb-6 lg:mb-8"
             >
               Technologies and tools I work with to build amazing digital experiences
             </motion.p>
@@ -81,7 +138,7 @@ const Skills = () => {
               transition={{ delay: 0.6, duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl hover:shadow-amber-300/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl hover:shadow-amber-300/50 transition-all duration-300"
             >
               View All Skills
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,53 +148,53 @@ const Skills = () => {
           </div>
 
           {/* Skills Animated Card Stacks */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {skillCategories.map((category, categoryIndex) => (
-              <div key={category.category} className="relative" style={{ height: '500px' }}>
+              <div key={category.category} className="relative w-full flex justify-center" style={{ height: responsive.containerHeight }}>
                 <CardSwap
-                  width={350}
-                  height={450}
-                  cardDistance={15}
-                  verticalDistance={20}
+                  width={responsive.cardWidth}
+                  height={responsive.cardHeight}
+                  cardDistance={responsive.cardDistance}
+                  verticalDistance={responsive.verticalDistance}
                   delay={4000 + categoryIndex * 500}
                   pauseOnHover={false}
-                  skewAmount={3}
+                  skewAmount={responsive.skewAmount}
                   easing="elastic"
                 >
                   {category.skills.map((skill, skillIndex) => (
                     <Card key={skill.name}>
-                      <div className="h-full bg-gradient-to-br from-white to-amber-50 p-6 flex flex-col items-center justify-center text-center">
+                      <div className="h-full bg-gradient-to-br from-white to-amber-50 p-3 sm:p-4 lg:p-6 flex flex-col items-center justify-center text-center">
                         {/* Skill Icon */}
-                        <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4 shadow-lg`}>
-                          <skill.icon className="text-4xl text-white" />
+                        <div className={`w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-2 sm:mb-3 lg:mb-4 shadow-lg`}>
+                          <skill.icon className="text-2xl sm:text-3xl lg:text-4xl text-white" />
                         </div>
                         
                         {/* Skill Name */}
-                        <h4 className="text-2xl font-bold text-black mb-2">{skill.name}</h4>
+                        <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2">{skill.name}</h4>
                         
                         {/* Skill Description */}
-                        <p className="text-gray-600 text-sm mb-4 px-4">{skill.desc}</p>
+                        <p className="text-gray-600 text-xs sm:text-sm lg:text-sm mb-2 sm:mb-3 lg:mb-4 px-1 sm:px-2 lg:px-4 leading-tight">{skill.desc}</p>
                         
                         {/* Progress Circle */}
-                        <div className="relative w-24 h-24 mb-3">
-                          <svg className="transform -rotate-90" width="96" height="96">
+                        <div className="relative w-16 sm:w-20 lg:w-24 h-16 sm:h-20 lg:h-24 mb-2 lg:mb-3">
+                          <svg className="transform -rotate-90 w-full h-full">
                             <circle
-                              cx="48"
-                              cy="48"
-                              r="40"
+                              cx="50%"
+                              cy="50%"
+                              r="28"
                               stroke="#f3f4f6"
-                              strokeWidth="8"
+                              strokeWidth="5"
                               fill="none"
                             />
                             <circle
-                              cx="48"
-                              cy="48"
-                              r="40"
-                              stroke="url(#gradient-${categoryIndex}-${skillIndex})"
-                              strokeWidth="8"
+                              cx="50%"
+                              cy="50%"
+                              r="28"
+                              stroke={`url(#gradient-${categoryIndex}-${skillIndex})`}
+                              strokeWidth="5"
                               fill="none"
-                              strokeDasharray={`${2 * Math.PI * 40}`}
-                              strokeDashoffset={`${2 * Math.PI * 40 * (1 - skill.level / 100)}`}
+                              strokeDasharray={`${2 * Math.PI * 28}`}
+                              strokeDashoffset={`${2 * Math.PI * 28 * (1 - skill.level / 100)}`}
                               strokeLinecap="round"
                             />
                             <defs>
@@ -148,12 +205,12 @@ const Skills = () => {
                             </defs>
                           </svg>
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-2xl font-bold text-black">{skill.level}%</span>
+                            <span className="text-base sm:text-lg lg:text-2xl font-bold text-black">{skill.level}%</span>
                           </div>
                         </div>
                         
                         {/* Category Badge */}
-                        <span className="px-4 py-1 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 rounded-full text-xs font-semibold">
+                        <span className="px-2 sm:px-3 lg:px-4 py-1 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 rounded-full text-xs font-semibold">
                           {category.category}
                         </span>
                       </div>

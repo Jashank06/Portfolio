@@ -1,9 +1,6 @@
 .card-swap-container {
-  position: absolute;
-  bottom: 50%;
-  right: 0;
-  transform: translate(5%, 50%);
-  transform-origin: center right;
+  position: relative;
+  margin: 0 auto;
   perspective: 900px;
   overflow: visible;
 }
@@ -28,16 +25,4 @@
 .card:hover {
   box-shadow: 0 15px 50px rgba(251, 191, 36, 0.4),
               0 0 30px rgba(249, 115, 22, 0.3);
-}
-
-@media (max-width: 768px) {
-  .card-swap-container {
-    transform: scale(0.75) translate(25%, 25%);
-  }
-}
-
-@media (max-width: 480px) {
-  .card-swap-container {
-    transform: scale(0.55) translate(25%, 25%);
-  }
 }

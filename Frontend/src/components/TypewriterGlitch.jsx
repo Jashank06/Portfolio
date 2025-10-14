@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import './TypewriterGlitch.css';
 
 const TypewriterGlitch = ({ text, delay = 0, speed = 80, className = '' }) => {
   const [displayText, setDisplayText] = useState('');
@@ -47,33 +48,6 @@ const TypewriterGlitch = ({ text, delay = 0, speed = 80, className = '' }) => {
           |
         </motion.span>
       )}
-      
-      <style jsx>{`
-        .glitch-text {
-          animation: glitch 0.3s ease-in-out;
-        }
-        
-        @keyframes glitch {
-          0% {
-            transform: translate(0);
-          }
-          20% {
-            transform: translate(-2px, 2px);
-          }
-          40% {
-            transform: translate(-2px, -2px);
-          }
-          60% {
-            transform: translate(2px, 2px);
-          }
-          80% {
-            transform: translate(2px, -2px);
-          }
-          100% {
-            transform: translate(0);
-          }
-        }
-      `}</style>
     </span>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaComments, FaCopy, FaCheck, FaCheckCircle } from 'react-icons/fa';
@@ -163,7 +163,6 @@ const Contact = () => {
   const [copiedField, setCopiedField] = useState('');
   const [focusedField, setFocusedField] = useState('');
   const [charCount, setCharCount] = useState(0);
-  const [typingField, setTypingField] = useState('');
   const [isTypingActive, setIsTypingActive] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   
@@ -498,22 +497,22 @@ const Contact = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Section Title */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full mb-4"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full mb-4"
             >
-              <FaComments className="text-amber-600" />
-              <span className="text-amber-700 font-semibold text-sm">CONTACT ME</span>
+              <FaComments className="text-amber-600 text-sm sm:text-base" />
+              <span className="text-amber-700 font-semibold text-xs sm:text-sm">CONTACT ME</span>
             </motion.div>
             
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-5xl md:text-6xl font-bold text-white mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4"
             >
               Get In Touch
             </motion.h2>
@@ -522,13 +521,13 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-gray-300 text-lg max-w-2xl mx-auto"
+              className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto"
             >
               Ready to bring your ideas to life? Let's collaborate and create something amazing together
             </motion.p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Left Side - Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -80, scale: 0.9 }}
@@ -540,7 +539,7 @@ const Contact = () => {
                 type: "spring",
                 stiffness: 80
               }}
-              className="space-y-8"
+              className="space-y-6 lg:space-y-8"
             >
               {/* Info Header */}
               <div className="relative">
@@ -548,7 +547,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.6, duration: 0.6 }}
-                  className="text-4xl md:text-5xl font-bold text-white mb-4"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
                 >
                   Let's Work Together
                 </motion.h3>
@@ -557,7 +556,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.7, duration: 0.6 }}
-                  className="text-gray-300 text-lg leading-relaxed"
+                  className="text-gray-300 text-base sm:text-lg leading-relaxed"
                 >
                   I'm currently available for freelance work and exciting project opportunities.
                   If you have a project in mind or just want to say hi, feel free to reach out!
@@ -565,7 +564,7 @@ const Contact = () => {
               </div>
 
               {/* Contact Cards */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.label}
@@ -587,23 +586,23 @@ const Contact = () => {
                     <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl blur-lg opacity-0 group-hover:opacity-60 transition-all duration-500"></div>
                     <div className="absolute -inset-2 bg-gradient-to-r from-amber-300/30 to-orange-400/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-all duration-700"></div>
                     
-                    <div className="relative flex items-center gap-6 p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 group-hover:border-amber-400 transition-all duration-300 shadow-lg overflow-hidden" style={{ transformStyle: 'preserve-3d' }}>
+                    <div className="relative flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200 group-hover:border-amber-400 transition-all duration-300 shadow-lg overflow-hidden" style={{ transformStyle: 'preserve-3d' }}>
                       {/* Ripple Effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-amber-400/10 to-orange-500/10 rounded-2xl scale-0 group-active:scale-100 transition-transform duration-300 origin-center"></div>
                       
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg relative z-10">
-                        <info.icon className="text-white text-2xl group-hover:animate-pulse" />
+                      <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg relative z-10">
+                        <info.icon className="text-white text-lg sm:text-2xl group-hover:animate-pulse" />
                       </div>
                       <div className="flex-1 relative z-10">
-                        <p className="text-amber-700 text-sm font-semibold uppercase tracking-wide mb-1">{info.label}</p>
-                        <p className="text-gray-800 font-semibold text-lg group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300">{info.value}</p>
+                        <p className="text-amber-700 text-xs sm:text-sm font-semibold uppercase tracking-wide mb-1">{info.label}</p>
+                        <p className="text-gray-800 font-semibold text-base sm:text-lg group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-orange-500 group-hover:bg-clip-text transition-all duration-300">{info.value}</p>
                         {info.label !== 'Location' && (
                           <p className="text-amber-600 text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             Click to copy {info.label.toLowerCase()}
                           </p>
                         )}
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 relative z-10">
+                      <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-amber-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 relative z-10">
                         {copiedField === info.label ? (
                           <motion.div
                             initial={{ scale: 0 }}
@@ -644,22 +643,22 @@ const Contact = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-amber-300/40 to-orange-400/40 rounded-3xl blur-xl opacity-30"></div>
               <div className="absolute -inset-3 bg-gradient-to-r from-yellow-200/20 to-red-300/20 rounded-3xl blur-2xl opacity-20"></div>
               
-              <form onSubmit={handleSubmit} className="relative bg-gradient-to-br from-white to-amber-50 p-8 lg:p-10 rounded-3xl shadow-2xl border-2 border-amber-200 space-y-6">
+              <form onSubmit={handleSubmit} className="relative bg-gradient-to-br from-white to-amber-50 p-6 sm:p-8 lg:p-10 rounded-3xl shadow-2xl border-2 border-amber-200 space-y-4 sm:space-y-6">
                 {/* Form Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-6 sm:mb-8">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.8, duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg"
+                    className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg"
                   >
-                    <FaPaperPlane className="text-white text-2xl" />
+                    <FaPaperPlane className="text-white text-lg sm:text-2xl" />
                   </motion.div>
                   <motion.h3
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.9, duration: 0.6 }}
-                    className="text-3xl font-bold text-gray-800 mb-2"
+                    className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2"
                   >
                     Send Message
                   </motion.h3>
@@ -667,14 +666,14 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 1.0, duration: 0.6 }}
-                    className="text-gray-700"
+                    className="text-gray-700 text-sm sm:text-base"
                   >
                     Drop me a line and let's make magic happen
                   </motion.p>
                 </div>
 
                 {/* Form Fields */}
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -695,11 +694,11 @@ const Contact = () => {
                       required
                       whileFocus={{ scale: 1.02 }}
                       whileHover={{ scale: 1.01 }}
-                      className="w-full px-6 py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 shadow-lg hover:shadow-xl peer"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 shadow-lg hover:shadow-xl peer"
                     />
                     {/* Typing Animation Overlay */}
                     {isTypingActive && !focusedField && !formData.name && (
-                      <div className="absolute left-6 top-4 pointer-events-none text-gray-500">
+                      <div className="absolute left-4 sm:left-6 top-3 sm:top-4 pointer-events-none text-gray-500">
                         <TypingPlaceholder 
                           text="Your Name" 
                           isActive={isTypingActive}
@@ -710,7 +709,7 @@ const Contact = () => {
                     
                     {/* Floating Label Effect */}
                     <motion.div
-                      className="absolute left-6 top-4 text-gray-500 pointer-events-none transition-all duration-300"
+                      className="absolute left-4 sm:left-6 top-3 sm:top-4 text-gray-500 pointer-events-none transition-all duration-300"
                       animate={{
                         y: formData.name || focusedField === 'name' ? -35 : 0,
                         x: formData.name || focusedField === 'name' ? -10 : 0,
@@ -723,7 +722,7 @@ const Contact = () => {
                     </motion.div>
                     {/* Input Icon */}
                     <motion.div
-                      className="absolute right-4 top-4 text-amber-400 opacity-0"
+                      className="absolute right-3 sm:right-4 top-3 sm:top-4 text-amber-400 opacity-0"
                       animate={{ opacity: focusedField === 'name' ? 1 : 0 }}
                     >
                       <HiSparkles className="text-xl" />
@@ -750,12 +749,12 @@ const Contact = () => {
                       required
                       whileFocus={{ scale: 1.02 }}
                       whileHover={{ scale: 1.01 }}
-                      className="w-full px-6 py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 shadow-lg hover:shadow-xl"
                     />
                     
                     {/* Typing Animation Overlay */}
                     {isTypingActive && !focusedField && !formData.email && (
-                      <div className="absolute left-6 top-4 pointer-events-none text-gray-500">
+                      <div className="absolute left-4 sm:left-6 top-3 sm:top-4 pointer-events-none text-gray-500">
                         <TypingPlaceholder 
                           text="Your Email" 
                           isActive={isTypingActive}
@@ -766,7 +765,7 @@ const Contact = () => {
                     
                     {/* Input Icon */}
                     <motion.div
-                      className="absolute right-4 top-4 text-amber-400 opacity-0"
+                      className="absolute right-3 sm:right-4 top-3 sm:top-4 text-amber-400 opacity-0"
                       animate={{ opacity: focusedField === 'email' ? 1 : 0 }}
                     >
                       <HiSparkles className="text-xl" />
@@ -793,12 +792,12 @@ const Contact = () => {
                       required
                       whileFocus={{ scale: 1.02 }}
                       whileHover={{ scale: 1.01 }}
-                      className="w-full px-6 py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 shadow-lg hover:shadow-xl"
                     />
                     
                     {/* Typing Animation Overlay */}
                     {isTypingActive && !focusedField && !formData.subject && (
-                      <div className="absolute left-6 top-4 pointer-events-none text-gray-500">
+                      <div className="absolute left-4 sm:left-6 top-3 sm:top-4 pointer-events-none text-gray-500">
                         <TypingPlaceholder 
                           text="Subject" 
                           isActive={isTypingActive}
@@ -809,7 +808,7 @@ const Contact = () => {
                     
                     {/* Input Icon */}
                     <motion.div
-                      className="absolute right-4 top-4 text-amber-400 opacity-0"
+                      className="absolute right-3 sm:right-4 top-3 sm:top-4 text-amber-400 opacity-0"
                       animate={{ opacity: focusedField === 'subject' ? 1 : 0 }}
                     >
                       <HiSparkles className="text-xl" />
@@ -832,11 +831,11 @@ const Contact = () => {
                       rows="6"
                       required
                       whileFocus={{ scale: 1.02 }}
-                      className="w-full px-6 py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 resize-none shadow-lg hover:shadow-xl"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border-2 border-amber-200 rounded-2xl text-black placeholder-gray-500 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 resize-none shadow-lg hover:shadow-xl"
                     ></motion.textarea>
                     {/* Character Counter */}
                     <motion.div
-                      className="absolute bottom-4 right-4 text-sm font-medium"
+                      className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 text-xs sm:text-sm font-medium"
                       animate={{
                         color: charCount > 500 ? '#EF4444' : charCount > 400 ? '#F59E0B' : '#10B981'
                       }}
@@ -845,7 +844,7 @@ const Contact = () => {
                     </motion.div>
                     {/* Typing Animation Overlay */}
                     {isTypingActive && !focusedField && !formData.message && (
-                      <div className="absolute left-6 top-4 pointer-events-none text-gray-500">
+                      <div className="absolute left-4 sm:left-6 top-3 sm:top-4 pointer-events-none text-gray-500">
                         <TypingPlaceholder 
                           text="Your Message..." 
                           isActive={isTypingActive}
@@ -856,7 +855,7 @@ const Contact = () => {
                     
                     {/* Floating Label Effect */}
                     <motion.div
-                      className="absolute left-6 top-4 text-gray-500 pointer-events-none transition-all duration-300"
+                      className="absolute left-4 sm:left-6 top-3 sm:top-4 text-gray-500 pointer-events-none transition-all duration-300"
                       animate={{
                         y: formData.message || focusedField === 'message' ? -35 : 0,
                         x: formData.message || focusedField === 'message' ? -10 : 0,
@@ -884,7 +883,7 @@ const Contact = () => {
                     }}
                     whileTap={{ scale: 0.98 }}
                     disabled={status === 'sending'}
-                    className="w-full px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 relative overflow-hidden group"
+                    className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-2xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 sm:gap-3 relative overflow-hidden group"
                   >
                     {/* Button Background Animation */}
                     <motion.div
@@ -893,7 +892,7 @@ const Contact = () => {
                     />
                     
                     {/* Button Content */}
-                    <div className="relative z-10 flex items-center gap-3">
+                    <div className="relative z-10 flex items-center gap-2 sm:gap-3">
                       {status === 'sending' ? (
                         <>
                           <motion.div
