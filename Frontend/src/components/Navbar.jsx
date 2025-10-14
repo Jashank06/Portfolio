@@ -63,7 +63,7 @@ const Navbar = () => {
                 className="w-14 h-14 rounded-full overflow-hidden shadow-lg bg-gradient-to-br from-amber-400 to-orange-500"
               >
                 <img 
-                  src="/logo.png" 
+                  src="/Logo.png" 
                   alt="Jashank Logo" 
                   className="w-full h-full object-cover"
                 />
@@ -140,7 +140,7 @@ const Navbar = () => {
                 className="w-11 h-11 rounded-full overflow-hidden shadow-lg bg-gradient-to-br from-amber-400 to-orange-500"
               >
                 <img 
-                  src="/logo.png" 
+                  src="/Logo.png" 
                   alt="Jashank Logo" 
                   className="w-full h-full object-cover"
                 />
