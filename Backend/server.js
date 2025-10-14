@@ -70,6 +70,15 @@ app.get('/', (req, res) => {
   res.json({ message: '🚀 Portfolio API is running!' });
 });
 
+// Health endpoint for Docker/Jenkins
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    message: 'Server is healthy',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Contact form submission
 app.post('/api/contact', async (req, res) => {
   try {
