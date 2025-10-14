@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
 import AllSkills from './pages/AllSkills';
 
 function App() {
@@ -35,20 +36,25 @@ function App() {
       
       {/* Main App Content */}
       {!isLoading && (
-        <Routes>
-          <Route path="/" element={
-            <div className="App scroll-smooth">
-              <Navbar />
-              <Hero />
-              <About />
-              <Skills />
-              <Projects />
-              <Contact />
-              <Footer />
-            </div>
-          } />
-          <Route path="/all-skills" element={<AllSkills />} />
-        </Routes>
+        <>
+          <Routes>
+            <Route path="/" element={
+              <div className="App scroll-smooth">
+                <Navbar />
+                <Hero />
+                <About />
+                <Skills />
+                <Projects />
+                <Contact />
+                <Footer />
+              </div>
+            } />
+            <Route path="/all-skills" element={<AllSkills />} />
+          </Routes>
+          
+          {/* Chatbot - Always visible */}
+          <Chatbot />
+        </>
       )}
     </Router>
   );

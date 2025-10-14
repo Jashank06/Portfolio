@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaComments, FaCopy, FaCheck, FaCheckCircle } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaComments, FaCopy, FaCheck, FaCheckCircle, FaDownload, FaFileAlt } from 'react-icons/fa';
 import { BsStars, BsArrowRight } from 'react-icons/bs';
 import { HiSparkles } from 'react-icons/hi';
 import axios from 'axios';
+import ResumePDF from '../assets/Resume_Jashank.pdf';
 
 // Confetti Animation Component
 const SuccessConfetti = ({ isActive }) => {
@@ -565,6 +566,76 @@ const Contact = () => {
                   If you have a project in mind or just want to say hi, feel free to reach out!
                 </motion.p>
               </div>
+
+              {/* Resume Download Button */}
+              <motion.a
+                href={ResumePDF}
+                download="Jashank_Resume.pdf"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ delay: 0.75, duration: 0.6 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: 5,
+                  rotateZ: 2
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative block cursor-pointer mb-6"
+                style={{ perspective: '1000px' }}
+              >
+                {/* Enhanced Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-amber-300/40 via-orange-400/40 to-red-400/40 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-all duration-700"></div>
+                
+                <div className="relative flex items-center gap-4 sm:gap-6 p-5 sm:p-7 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-2xl shadow-2xl overflow-hidden group-hover:shadow-amber-500/50 transition-all duration-300" style={{ transformStyle: 'preserve-3d' }}>
+                  {/* Animated Background Pattern */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition-colors duration-300"></div>
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="w-14 sm:w-18 h-14 sm:h-18 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-xl relative z-10">
+                    <FaFileAlt className="text-white text-2xl sm:text-3xl group-hover:animate-bounce" />
+                  </div>
+                  
+                  {/* Text Content */}
+                  <div className="flex-1 relative z-10">
+                    <p className="text-white/90 text-xs sm:text-sm font-bold uppercase tracking-wider mb-1">Download</p>
+                    <p className="text-white font-bold text-xl sm:text-2xl mb-1">My Resume</p>
+                    <p className="text-white/80 text-xs sm:text-sm">Get to know more about my experience</p>
+                  </div>
+                  
+                  {/* Download Icon */}
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 relative z-10">
+                    <motion.div
+                      animate={{ 
+                        y: [0, 5, 0],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <FaDownload className="text-white text-lg sm:text-xl" />
+                    </motion.div>
+                  </div>
+                  
+                  {/* Shine Effect */}
+                  <motion.div
+                    className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                    animate={{
+                      left: ['-100%', '200%']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+              </motion.a>
 
               {/* Contact Cards */}
               <div className="space-y-4 sm:space-y-6">

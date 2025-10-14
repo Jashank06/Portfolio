@@ -80,6 +80,9 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact', contactSchema);
 
+// Import routes
+const chatbotRoutes = require('./routes/chatbot');
+
 // Routes
 
 // Health check route
@@ -95,6 +98,9 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// Use chatbot routes
+app.use('/api/chatbot', chatbotRoutes);
 
 // Contact form submission
 app.post('/api/contact', async (req, res) => {
