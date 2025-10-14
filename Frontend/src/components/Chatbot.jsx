@@ -11,7 +11,6 @@ import {
   FaLinkedin,
   FaEnvelope,
   FaProjectDiagram,
-  FaLightbulb,
   FaUser
 } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
