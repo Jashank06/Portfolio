@@ -9,9 +9,26 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
-// CORS Middleware - Handle all CORS issues
+// CORS Middleware - Allow all origins for production
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3002',
+  'http://jashank.dpdns.org',
+  'https://jashank.dpdns.org',
+  'http://16.16.166.174',
+  'https://16.16.166.174'
+];
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const origin = req.headers.origin;
+  
+  // Allow all origins in development, specific ones in production
+  if (allowedOrigins.includes(origin) || !origin) {
+    res.header('Access-Control-Allow-Origin', origin || '*');
+  } else {
+    res.header('Access-Control-Allow-Origin', '*'); // Allow all for now
+  }
+  
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
   res.header('Access-Control-Allow-Credentials', 'true');

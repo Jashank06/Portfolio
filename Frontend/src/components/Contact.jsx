@@ -225,7 +225,10 @@ const Contact = () => {
     try {
       setStatus('sending');
       
-      const response = await axios.post('http://localhost:5001/api/contact', formData, {
+      // Use environment variable or fallback to production backend
+      const API_URL = process.env.REACT_APP_API_URL || 'http://16.16.166.174:5000';
+      
+      const response = await axios.post(`${API_URL}/api/contact`, formData, {
         headers: {
           'Content-Type': 'application/json',
         },
