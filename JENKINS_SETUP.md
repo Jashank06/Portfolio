@@ -53,7 +53,7 @@
    Scope: Global (Jenkins, nodes, items, all child items, etc)
    Username: [Your Docker Hub Username]
    Password: [Your Docker Hub Password or Access Token]
-   ID: docker-hub-credentials
+   ID: dockerhub
    Description: Docker Hub Credentials for Image Push
    ```
 
@@ -75,7 +75,7 @@
    Kind: Username with password
    Username: [Your Docker Hub Username]
    Password: [Paste the Access Token here]
-   ID: docker-hub-credentials
+   ID: dockerhub
    Description: Docker Hub Access Token
    ```
 
@@ -86,7 +86,7 @@
 cat > docker-hub-creds.xml << EOF
 <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
   <scope>GLOBAL</scope>
-  <id>docker-hub-credentials</id>
+  <id>dockerhub</id>
   <description>Docker Hub Credentials</description>
   <username>YOUR_DOCKER_USERNAME</username>
   <password>YOUR_DOCKER_PASSWORD</password>
@@ -286,7 +286,7 @@ docker restart jenkins
 
 **Solution:**
 - Verify credentials in Jenkins
-- Check credential ID matches: `docker-hub-credentials`
+- Check credential ID matches: `dockerhub`
 - Try creating new Access Token on Docker Hub
 - Test login manually:
 ```bash
@@ -363,7 +363,7 @@ pipeline {
             steps {
                 echo 'Pushing images to Docker Hub...'
                 withCredentials([usernamePassword(
-                    credentialsId: 'docker-hub-credentials',
+                    credentialsId: 'dockerhub',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
