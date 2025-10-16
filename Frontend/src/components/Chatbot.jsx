@@ -623,7 +623,7 @@ const Chatbot = () => {
   return (
     <>
       {/* Chatbot Button with Name Label */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col items-end gap-2 md:gap-3">
         {/* Name Label and Quote - Shows when closed */}
         <AnimatePresence>
           {!isOpen && (
@@ -634,12 +634,12 @@ const Chatbot = () => {
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="flex flex-col items-end gap-2"
             >
-              {/* Quote Bubble */}
+              {/* Quote Bubble - Hidden on mobile */}
               <motion.div
                 initial={{ y: 10 }}
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="relative bg-white px-4 py-2 rounded-2xl rounded-br-sm shadow-xl border-2 border-amber-200 max-w-xs"
+                className="hidden sm:block relative bg-white px-4 py-2 rounded-2xl rounded-br-sm shadow-xl border-2 border-amber-200 max-w-xs"
               >
                 <p className="text-gray-800 text-sm font-medium">
                   👋 How can I help you?
@@ -648,13 +648,13 @@ const Chatbot = () => {
                 <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white border-r-2 border-b-2 border-amber-200 transform rotate-45"></div>
               </motion.div>
               
-              {/* Name Badge */}
+              {/* Name Badge - Smaller on mobile */}
               <motion.div
                 whileHover={{ scale: 1.05, x: -5 }}
-                className="bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-2 rounded-full shadow-lg"
+                className="hidden sm:flex bg-gradient-to-r from-amber-400 to-orange-500 px-3 py-1.5 md:px-4 md:py-2 rounded-full shadow-lg"
               >
-                <p className="text-white font-bold text-sm flex items-center gap-2">
-                  <FaRobot className="text-base" />
+                <p className="text-white font-bold text-xs md:text-sm flex items-center gap-2">
+                  <FaRobot className="text-sm md:text-base" />
                   Jashy
                 </p>
               </motion.div>
@@ -665,7 +665,7 @@ const Chatbot = () => {
         {/* Chatbot Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full shadow-2xl flex items-center justify-center group hover:shadow-amber-500/50 transition-all duration-300"
+          className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full shadow-2xl flex items-center justify-center group hover:shadow-amber-500/50 transition-all duration-300"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           initial={{ scale: 0, rotate: -180 }}
@@ -681,7 +681,7 @@ const Chatbot = () => {
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <FaRobot className="text-white text-2xl" />
+                <FaRobot className="text-white text-xl md:text-2xl" />
               </motion.div>
             ) : (
               <motion.div
@@ -691,7 +691,7 @@ const Chatbot = () => {
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <FaTimes className="text-white text-2xl" />
+                <FaTimes className="text-white text-xl md:text-2xl" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -709,37 +709,36 @@ const Chatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-24 right-6 z-50 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
-            style={{ maxWidth: 'calc(100vw - 3rem)' }}
+            className="fixed bottom-20 right-4 md:bottom-24 md:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[400px] md:w-96 h-[calc(100vh-6rem)] sm:h-[500px] md:h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className={`p-4 flex items-center justify-between ${
+            <div className={`p-3 md:p-4 flex items-center justify-between ${
               isDarkTheme 
                 ? 'bg-gradient-to-r from-gray-800 to-gray-900' 
                 : 'bg-gradient-to-r from-amber-400 to-orange-500'
             }`}>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 md:gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <FaRobot className="text-orange-500 text-xl" />
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center">
+                    <FaRobot className="text-orange-500 text-lg md:text-xl" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></span>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-green-400 rounded-full border-2 border-white"></span>
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">Jashy</h3>
-                  <p className="text-white/80 text-xs flex items-center gap-1">
+                  <h3 className="text-white font-bold text-sm md:text-base">Jashy</h3>
+                  <p className="text-white/80 text-xs hidden sm:flex items-center gap-1">
                     <span className="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                     Your AI Assistant
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 md:gap-2">
                 {/* Voice Output Toggle */}
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={toggleAutoSpeak}
-                  className={`p-2 rounded-lg transition-colors ${
+                  className={`p-1.5 md:p-2 rounded-lg transition-colors text-sm md:text-base ${
                     autoSpeak
                       ? 'bg-green-500 text-white hover:bg-green-600'
                       : 'text-white hover:bg-white/20'
@@ -755,7 +754,7 @@ const Chatbot = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={stopSpeaking}
-                    className="text-white hover:bg-white/20 p-2 rounded-lg transition-colors animate-pulse"
+                    className="text-white hover:bg-white/20 p-1.5 md:p-2 rounded-lg transition-colors animate-pulse text-sm md:text-base"
                     title="Stop Speaking"
                   >
                     ⏸️
@@ -767,18 +766,18 @@ const Chatbot = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={toggleTheme}
-                  className="text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+                  className="text-white hover:bg-white/20 p-1.5 md:p-2 rounded-lg transition-colors text-sm md:text-base"
                   title={isDarkTheme ? 'Light Mode' : 'Dark Mode'}
                 >
                   {isDarkTheme ? '☀️' : '🌙'}
                 </motion.button>
                 
-                {/* Clear History */}
+                {/* Clear History - Hidden on small screens */}
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={clearHistory}
-                  className="text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+                  className="hidden sm:block text-white hover:bg-white/20 p-1.5 md:p-2 rounded-lg transition-colors text-sm md:text-base"
                   title="Clear Chat History"
                 >
                   🗑️
@@ -789,37 +788,37 @@ const Chatbot = () => {
                   whileHover={{ rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+                  className="text-white hover:bg-white/20 p-1.5 md:p-2 rounded-lg transition-colors"
                 >
-                  <FaTimes />
+                  <FaTimes className="text-sm md:text-base" />
                 </motion.button>
               </div>
             </div>
 
             {/* Quick Actions */}
-            <div className={`p-3 border-b overflow-x-auto ${
+            <div className={`p-2 md:p-3 border-b overflow-x-auto scrollbar-hide ${
               isDarkTheme
                 ? 'bg-gray-800 border-gray-700'
                 : 'bg-gray-50 border-gray-200'
             }`}>
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 md:gap-2">
                 {quickActions.map((action, index) => (
                   <motion.button
                     key={index}
                     onClick={() => handleQuickAction(action.action)}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-sm font-medium text-gray-700 hover:text-amber-600 border border-gray-200"
+                    className="flex-shrink-0 flex items-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3 md:py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow text-xs md:text-sm font-medium text-gray-700 hover:text-amber-600 border border-gray-200"
                   >
-                    <action.icon className="text-amber-500" />
-                    {action.text}
+                    <action.icon className="text-amber-500 text-sm md:text-base" />
+                    <span className="whitespace-nowrap">{action.text}</span>
                   </motion.button>
                 ))}
               </div>
             </div>
 
             {/* Messages */}
-            <div className={`flex-1 overflow-y-auto p-4 space-y-4 ${
+            <div className={`flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4 ${
               isDarkTheme ? 'bg-gray-900' : 'bg-gray-50'
             }`}>
               {messages.map((message, index) => (
@@ -830,8 +829,8 @@ const Chatbot = () => {
                   transition={{ duration: 0.3 }}
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[80%] ${message.type === 'user' ? 'order-2' : 'order-1'}`}>
-                    <div className={`rounded-2xl px-4 py-3 ${
+                  <div className={`max-w-[85%] md:max-w-[80%] ${message.type === 'user' ? 'order-2' : 'order-1'}`}>
+                    <div className={`rounded-2xl px-3 py-2 md:px-4 md:py-3 ${
                       message.type === 'user'
                         ? isDarkTheme
                           ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
@@ -840,9 +839,9 @@ const Chatbot = () => {
                           ? 'bg-gray-800 text-gray-100 shadow-md border border-gray-700'
                           : 'bg-white text-gray-800 shadow-md'
                     }`}>
-                      <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+                      <p className="text-xs md:text-sm whitespace-pre-wrap">{message.text}</p>
                     </div>
-                    <p className={`text-xs text-gray-500 mt-1 ${message.type === 'user' ? 'text-right' : 'text-left'}`}>
+                    <p className={`text-[10px] md:text-xs text-gray-500 mt-1 ${message.type === 'user' ? 'text-right' : 'text-left'}`}>
                       {message.time}
                     </p>
                   </div>
@@ -856,22 +855,22 @@ const Chatbot = () => {
                   animate={{ opacity: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-white rounded-2xl px-4 py-3 shadow-md">
+                  <div className="bg-white rounded-2xl px-3 py-2 md:px-4 md:py-3 shadow-md">
                     <div className="flex gap-1">
                       <motion.span
                         animate={{ y: [0, -5, 0] }}
                         transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}
-                        className="w-2 h-2 bg-gray-400 rounded-full"
+                        className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 rounded-full"
                       />
                       <motion.span
                         animate={{ y: [0, -5, 0] }}
                         transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }}
-                        className="w-2 h-2 bg-gray-400 rounded-full"
+                        className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 rounded-full"
                       />
                       <motion.span
                         animate={{ y: [0, -5, 0] }}
                         transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }}
-                        className="w-2 h-2 bg-gray-400 rounded-full"
+                        className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gray-400 rounded-full"
                       />
                     </div>
                   </div>
@@ -883,7 +882,7 @@ const Chatbot = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex flex-wrap gap-2 mt-4"
+                  className="flex flex-wrap gap-1.5 md:gap-2 mt-3 md:mt-4"
                 >
                   {suggestions.map((suggestion, index) => (
                     <motion.button
@@ -891,10 +890,10 @@ const Chatbot = () => {
                       onClick={() => handleSuggestionClick(suggestion)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-3 py-2 bg-white text-gray-700 rounded-lg text-sm border border-gray-200 hover:border-amber-400 hover:text-amber-600 transition-colors shadow-sm flex items-center gap-2"
+                      className="px-2.5 py-1.5 md:px-3 md:py-2 bg-white text-gray-700 rounded-lg text-xs md:text-sm border border-gray-200 hover:border-amber-400 hover:text-amber-600 transition-colors shadow-sm flex items-center gap-1.5 md:gap-2"
                     >
-                      <HiSparkles className="text-amber-500" />
-                      {suggestion}
+                      <HiSparkles className="text-amber-500 text-sm md:text-base" />
+                      <span className="whitespace-nowrap">{suggestion}</span>
                     </motion.button>
                   ))}
                 </motion.div>
@@ -904,20 +903,20 @@ const Chatbot = () => {
             </div>
 
             {/* Input */}
-            <div className={`p-4 border-t ${
+            <div className={`p-3 md:p-4 border-t ${
               isDarkTheme
                 ? 'bg-gray-800 border-gray-700'
                 : 'bg-white border-gray-200'
             }`}>
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 md:gap-2">
                 <input
                   ref={inputRef}
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                  placeholder={isListening ? "Listening..." : "Type or speak your message..."}
-                  className={`flex-1 px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:border-transparent ${
+                  placeholder={isListening ? "Listening..." : "Type your message..."}
+                  className={`flex-1 px-3 py-2 md:px-4 md:py-3 border rounded-xl text-sm md:text-base focus:outline-none focus:ring-2 focus:border-transparent ${
                     isDarkTheme
                       ? 'bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400 focus:ring-blue-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:ring-amber-500'
@@ -929,7 +928,7 @@ const Chatbot = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleVoiceInput}
-                  className={`px-4 py-3 rounded-xl transition-all ${
+                  className={`px-3 py-2 md:px-4 md:py-3 rounded-xl transition-all ${
                     isListening
                       ? 'bg-red-500 text-white animate-pulse'
                       : isDarkTheme
@@ -938,7 +937,7 @@ const Chatbot = () => {
                   }`}
                   title="Voice Input"
                 >
-                  <FaMicrophone />
+                  <FaMicrophone className="text-sm md:text-base" />
                 </motion.button>
                 
                 {/* Send Button */}
@@ -947,25 +946,28 @@ const Chatbot = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSendMessage()}
                   disabled={!inputValue.trim()}
-                  className={`px-4 py-3 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-shadow ${
+                  className={`px-3 py-2 md:px-4 md:py-3 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-shadow ${
                     isDarkTheme
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600'
                       : 'bg-gradient-to-r from-amber-400 to-orange-500'
                   }`}
                 >
-                  <FaPaperPlane />
+                  <FaPaperPlane className="text-sm md:text-base" />
                 </motion.button>
               </div>
-              <p className={`text-xs mt-2 text-center flex items-center justify-center gap-2 ${
+              <p className={`text-[10px] md:text-xs mt-2 text-center flex items-center justify-center gap-1 md:gap-2 ${
                 isDarkTheme ? 'text-gray-400' : 'text-gray-500'
               }`}>
-                <HiSparkles className={isDarkTheme ? 'text-blue-400' : 'text-amber-500'} />
+                <HiSparkles className={`text-xs md:text-sm ${isDarkTheme ? 'text-blue-400' : 'text-amber-500'}`} />
                 {isListening && '🎤 Listening... '}
                 {isSpeaking && '🔊 Speaking... '}
                 {!isListening && !isSpeaking && (
-                  <span>
+                  <span className="hidden sm:inline">
                     Powered by Smart AI {autoSpeak && '• 🔊 Voice ON'}
                   </span>
+                )}
+                {!isListening && !isSpeaking && (
+                  <span className="sm:hidden">Smart AI {autoSpeak && '🔊'}</span>
                 )}
               </p>
             </div>
