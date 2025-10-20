@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "http://jashank.dpdns.org/static/css/main.6b131aa6.css",
-    "main.js": "http://jashank.dpdns.org/static/js/main.9b68c70a.js",
-    "static/js/453.eb570f4f.chunk.js": "http://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js",
-    "static/media/E_learning2.png": "http://jashank.dpdns.org/static/media/E_learning2.843784e67cdae4a97dde.png",
-    "static/media/E_learning3.png": "http://jashank.dpdns.org/static/media/E_learning3.5a88a963a82b60230af8.png",
-    "static/media/Portfolio2.png": "http://jashank.dpdns.org/static/media/Portfolio2.da2a6dbf366c54caa8c6.png",
-    "static/media/Salon2.png": "http://jashank.dpdns.org/static/media/Salon2.d8e6c671ea783058c8f4.png",
-    "static/media/Portfolio3.png": "http://jashank.dpdns.org/static/media/Portfolio3.0d9e244b10e09e5c659b.png",
-    "static/media/Salon1.png": "http://jashank.dpdns.org/static/media/Salon1.1d43dbb7089836acc597.png",
-    "static/media/E_learning1.png": "http://jashank.dpdns.org/static/media/E_learning1.464d0ce7ebd382ca6805.png",
-    "static/media/Portfolio1.png": "http://jashank.dpdns.org/static/media/Portfolio1.cdba56b55cb547a6eb06.png",
-    "static/media/Salon3.png": "http://jashank.dpdns.org/static/media/Salon3.3daf99c0e37e71cb64fe.png",
-    "static/media/Resume_Jashank.pdf": "http://jashank.dpdns.org/static/media/Resume_Jashank.91164d508513536664e5.pdf",
-    "static/media/profile.jpg": "http://jashank.dpdns.org/static/media/profile.82c9a4d630481790fd18.jpg",
-    "static/media/profile1.jpg": "http://jashank.dpdns.org/static/media/profile1.983f0f90009d6aae5ec4.jpg",
-    "index.html": "http://jashank.dpdns.org/index.html",
-    "main.6b131aa6.css.map": "http://jashank.dpdns.org/static/css/main.6b131aa6.css.map",
-    "main.9b68c70a.js.map": "http://jashank.dpdns.org/static/js/main.9b68c70a.js.map",
-    "453.eb570f4f.chunk.js.map": "http://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js.map"
+    "main.css": "https://jashank.dpdns.org/static/css/main.6b131aa6.css",
+    "main.js": "https://jashank.dpdns.org/static/js/main.338712e1.js",
+    "static/js/453.eb570f4f.chunk.js": "https://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js",
+    "static/media/E_learning2.png": "https://jashank.dpdns.org/static/media/E_learning2.843784e67cdae4a97dde.png",
+    "static/media/E_learning3.png": "https://jashank.dpdns.org/static/media/E_learning3.5a88a963a82b60230af8.png",
+    "static/media/Portfolio2.png": "https://jashank.dpdns.org/static/media/Portfolio2.da2a6dbf366c54caa8c6.png",
+    "static/media/Salon2.png": "https://jashank.dpdns.org/static/media/Salon2.d8e6c671ea783058c8f4.png",
+    "static/media/Portfolio3.png": "https://jashank.dpdns.org/static/media/Portfolio3.0d9e244b10e09e5c659b.png",
+    "static/media/Salon1.png": "https://jashank.dpdns.org/static/media/Salon1.1d43dbb7089836acc597.png",
+    "static/media/E_learning1.png": "https://jashank.dpdns.org/static/media/E_learning1.464d0ce7ebd382ca6805.png",
+    "static/media/Portfolio1.png": "https://jashank.dpdns.org/static/media/Portfolio1.cdba56b55cb547a6eb06.png",
+    "static/media/Salon3.png": "https://jashank.dpdns.org/static/media/Salon3.3daf99c0e37e71cb64fe.png",
+    "static/media/Resume_Jashank.pdf": "https://jashank.dpdns.org/static/media/Resume_Jashank.91164d508513536664e5.pdf",
+    "static/media/profile.jpg": "https://jashank.dpdns.org/static/media/profile.82c9a4d630481790fd18.jpg",
+    "static/media/profile1.jpg": "https://jashank.dpdns.org/static/media/profile1.983f0f90009d6aae5ec4.jpg",
+    "index.html": "https://jashank.dpdns.org/index.html",
+    "main.6b131aa6.css.map": "https://jashank.dpdns.org/static/css/main.6b131aa6.css.map",
+    "main.338712e1.js.map": "https://jashank.dpdns.org/static/js/main.338712e1.js.map",
+    "453.eb570f4f.chunk.js.map": "https://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b131aa6.css",
-    "static/js/main.9b68c70a.js"
+    "static/js/main.338712e1.js"
   ]
 }
