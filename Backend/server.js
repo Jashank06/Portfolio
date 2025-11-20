@@ -182,62 +182,58 @@ app.get('/api/contacts', async (req, res) => {
   }
 });
 
-// Email sending function using Nodemailer
+// Email sending function using Resend (works on Render free tier)
 const sendEmailNotification = async ({ name, email, subject, message }) => {
-  const nodemailer = require('nodemailer');
+  // Skip email if RESEND_API_KEY not configured
+  if (!process.env.RESEND_API_KEY) {
+    console.log('⚠️ RESEND_API_KEY not set, skipping email notification');
+    return;
+  }
 
-  // Create transporter
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  // Email options
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER, // Send to yourself
-    subject: `🚀 Portfolio Contact: ${subject}`,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #FEF3C7 0%, #FED7AA 100%); padding: 20px; border-radius: 15px;">
-        <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-          <h2 style="color: #F59E0B; font-size: 28px; margin-bottom: 20px; text-align: center;">📧 New Portfolio Contact</h2>
-          <hr style="border: 2px solid #F59E0B; margin: 20px 0;">
-          
-          <div style="margin: 15px 0;">
-            <strong style="color: #1F2937; font-size: 16px;">👤 Name:</strong>
-            <p style="background: #F3F4F6; padding: 10px; border-radius: 8px; margin: 5px 0; font-size: 16px;">${name}</p>
-          </div>
-          
-          <div style="margin: 15px 0;">
-            <strong style="color: #1F2937; font-size: 16px;">📧 Email:</strong>
-            <p style="background: #F3F4F6; padding: 10px; border-radius: 8px; margin: 5px 0; font-size: 16px;"><a href="mailto:${email}" style="color: #F59E0B; text-decoration: none;">${email}</a></p>
-          </div>
-          
-          <div style="margin: 15px 0;">
-            <strong style="color: #1F2937; font-size: 16px;">📝 Subject:</strong>
-            <p style="background: #F3F4F6; padding: 10px; border-radius: 8px; margin: 5px 0; font-size: 16px;">${subject}</p>
-          </div>
-          
-          <div style="margin: 15px 0;">
-            <strong style="color: #1F2937; font-size: 16px;">💬 Message:</strong>
-            <div style="background: #F3F4F6; padding: 15px; border-radius: 8px; margin: 5px 0; font-size: 16px; line-height: 1.6;">${message.replace(/\n/g, '<br>')}</div>
-          </div>
-          
-          <hr style="border: 1px solid #E5E7EB; margin: 25px 0;">
-          <p style="text-align: center; color: #6B7280; font-size: 14px; margin: 0;">💼 Sent from your Portfolio Website | ${new Date().toLocaleString()}</p>
-        </div>
-      </div>
-    `,
-  };
+  const { Resend } = require('resend');
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log('✅ Email notification sent');
+    await resend.emails.send({
+      from: 'Portfolio Contact <onboarding@resend.dev>', // Default Resend sender
+      to: process.env.EMAIL_USER || 'jay440470@gmail.com',
+      subject: `🚀 Portfolio Contact: ${subject}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #FEF3C7 0%, #FED7AA 100%); padding: 20px; border-radius: 15px;">
+          <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <h2 style="color: #F59E0B; font-size: 28px; margin-bottom: 20px; text-align: center;">📧 New Portfolio Contact</h2>
+            <hr style="border: 2px solid #F59E0B; margin: 20px 0;">
+            
+            <div style="margin: 15px 0;">
+              <strong style="color: #1F2937; font-size: 16px;">👤 Name:</strong>
+              <p style="background: #F3F4F6; padding: 10px; border-radius: 8px; margin: 5px 0; font-size: 16px;">${name}</p>
+            </div>
+            
+            <div style="margin: 15px 0;">
+              <strong style="color: #1F2937; font-size: 16px;">📧 Email:</strong>
+              <p style="background: #F3F4F6; padding: 10px; border-radius: 8px; margin: 5px 0; font-size: 16px;"><a href="mailto:${email}" style="color: #F59E0B; text-decoration: none;">${email}</a></p>
+            </div>
+            
+            <div style="margin: 15px 0;">
+              <strong style="color: #1F2937; font-size: 16px;">📝 Subject:</strong>
+              <p style="background: #F3F4F6; padding: 10px; border-radius: 8px; margin: 5px 0; font-size: 16px;">${subject}</p>
+            </div>
+            
+            <div style="margin: 15px 0;">
+              <strong style="color: #1F2937; font-size: 16px;">💬 Message:</strong>
+              <div style="background: #F3F4F6; padding: 15px; border-radius: 8px; margin: 5px 0; font-size: 16px; line-height: 1.6;">${message.replace(/\n/g, '<br>')}</div>
+            </div>
+            
+            <hr style="border: 1px solid #E5E7EB; margin: 25px 0;">
+            <p style="text-align: center; color: #6B7280; font-size: 14px; margin: 0;">💼 Sent from your Portfolio Website | ${new Date().toLocaleString()}</p>
+          </div>
+        </div>
+      `,
+    });
+    console.log('✅ Email notification sent via Resend');
   } catch (error) {
     console.error('❌ Email sending failed:', error);
+    throw error;
   }
 };
 
