@@ -16,7 +16,8 @@ const allowedOrigins = [
   'http://jashank.dpdns.org',
   'https://jashank.dpdns.org',
   'http://16.16.166.174',
-  'https://16.16.166.174'
+  'https://16.16.166.174',
+  'https://portfolio-gi98.onrender.com'
 ];
 
 app.use((req, res, next) => {
