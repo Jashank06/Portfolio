@@ -1,27 +1,36 @@
 {
   "files": {
     "main.css": "https://jashank.dpdns.org/static/css/main.6b131aa6.css",
-    "main.js": "https://jashank.dpdns.org/static/js/main.338712e1.js",
+    "main.js": "https://jashank.dpdns.org/static/js/main.df2ea9b9.js",
     "static/js/453.eb570f4f.chunk.js": "https://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js",
+    "static/media/Atola1.png": "https://jashank.dpdns.org/static/media/Atola1.d6c3b85a7340a62b2595.png",
     "static/media/E_learning2.png": "https://jashank.dpdns.org/static/media/E_learning2.843784e67cdae4a97dde.png",
+    "static/media/Aditya1.png": "https://jashank.dpdns.org/static/media/Aditya1.d5171f32938f312bcf6b.png",
     "static/media/E_learning3.png": "https://jashank.dpdns.org/static/media/E_learning3.5a88a963a82b60230af8.png",
+    "static/media/Aditya3.png": "https://jashank.dpdns.org/static/media/Aditya3.2dc8786b7f6122a1ee1d.png",
+    "static/media/Atola2.png": "https://jashank.dpdns.org/static/media/Atola2.c14ef5342e738bb96852.png",
     "static/media/Portfolio2.png": "https://jashank.dpdns.org/static/media/Portfolio2.da2a6dbf366c54caa8c6.png",
+    "static/media/Aditya2.png": "https://jashank.dpdns.org/static/media/Aditya2.c41de46ad86c4d800fde.png",
     "static/media/Salon2.png": "https://jashank.dpdns.org/static/media/Salon2.d8e6c671ea783058c8f4.png",
     "static/media/Portfolio3.png": "https://jashank.dpdns.org/static/media/Portfolio3.0d9e244b10e09e5c659b.png",
     "static/media/Salon1.png": "https://jashank.dpdns.org/static/media/Salon1.1d43dbb7089836acc597.png",
+    "static/media/Atola3.png": "https://jashank.dpdns.org/static/media/Atola3.64ce4d865f9ecb93574b.png",
     "static/media/E_learning1.png": "https://jashank.dpdns.org/static/media/E_learning1.464d0ce7ebd382ca6805.png",
     "static/media/Portfolio1.png": "https://jashank.dpdns.org/static/media/Portfolio1.cdba56b55cb547a6eb06.png",
     "static/media/Salon3.png": "https://jashank.dpdns.org/static/media/Salon3.3daf99c0e37e71cb64fe.png",
+    "static/media/Shiven1.png": "https://jashank.dpdns.org/static/media/Shiven1.1ba5a1b7cce6ee52283f.png",
+    "static/media/Shiven2.png": "https://jashank.dpdns.org/static/media/Shiven2.5f2ea066170792309631.png",
+    "static/media/Shiven3.png": "https://jashank.dpdns.org/static/media/Shiven3.efa9f46e6d3cfa2121fc.png",
     "static/media/Resume_Jashank.pdf": "https://jashank.dpdns.org/static/media/Resume_Jashank.91164d508513536664e5.pdf",
     "static/media/profile.jpg": "https://jashank.dpdns.org/static/media/profile.82c9a4d630481790fd18.jpg",
     "static/media/profile1.jpg": "https://jashank.dpdns.org/static/media/profile1.983f0f90009d6aae5ec4.jpg",
     "index.html": "https://jashank.dpdns.org/index.html",
     "main.6b131aa6.css.map": "https://jashank.dpdns.org/static/css/main.6b131aa6.css.map",
-    "main.338712e1.js.map": "https://jashank.dpdns.org/static/js/main.338712e1.js.map",
+    "main.df2ea9b9.js.map": "https://jashank.dpdns.org/static/js/main.df2ea9b9.js.map",
     "453.eb570f4f.chunk.js.map": "https://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b131aa6.css",
-    "static/js/main.338712e1.js"
+    "static/js/main.df2ea9b9.js"
   ]
 }
