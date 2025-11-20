@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Backend Service
   backend:
@@ -52,7 +50,7 @@ services:
       retries: 3
       start_period: 40s
 
-  # MongoDB Service (optional - uncomment if needed)
+  # MongoDB Service
   # mongodb:
   #   image: mongo:7.0
   #   container_name: portfolio-mongodb
@@ -69,7 +67,7 @@ services:
   #   networks:
   #     - portfolio-network
 
-  # Nginx Reverse Proxy (optional - for production)
+  # Nginx Reverse Proxy
   # nginx:
   #   image: nginx:alpine
   #   container_name: portfolio-nginx

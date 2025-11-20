@@ -14,6 +14,15 @@ import Salon3 from '../assets/Salon3.png';
 import Portfolio1 from '../assets/Portfolio1.png';
 import Portfolio2 from '../assets/Portfolio2.png';
 import Portfolio3 from '../assets/Portfolio3.png';
+import Atola1 from '../assets/Atola1.png';
+import Atola2 from '../assets/Atola2.png';
+import Atola3 from '../assets/Atola3.png';
+import Shiven1 from '../assets/Shiven1.png';
+import Shiven2 from '../assets/Shiven2.png';
+import Shiven3 from '../assets/Shiven3.png';
+import Aditya1 from '../assets/Aditya1.png';
+import Aditya2 from '../assets/Aditya2.png';
+import Aditya3 from '../assets/Aditya3.png';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -21,9 +30,37 @@ const Projects = () => {
     threshold: 0.1,
   });
 
-  const [currentImageIndex, setCurrentImageIndex] = useState([0, 0, 0]);
+  // Track the active image index per project dynamically
+  const [currentImageIndex, setCurrentImageIndex] = useState([]);
 
   const projects = useMemo(() => [
+    {
+      title: 'Contractor CRM',
+      type: 'Client Project',
+      description: 'A contractor CRM platform for managing leads, contacts, jobs, quotes, and invoices with a clean and responsive UI.',
+      images: [Atola1, Atola2, Atola3],
+      tags: ['React', 'Tailwind', 'Node.js', 'Express.js', 'MongoDB', 'Git'],
+      github: '#',
+      live: 'https://atola.in/',
+    },
+    {
+      title: 'Shiven Enterprises',
+      type: 'Client Project',
+      description: 'Corporate website with service pages, contact flows, and performance-optimized frontend for better SEO and UX.',
+      images: [Shiven1, Shiven2, Shiven3],
+      tags: ['Next.js', 'Tailwind', 'PostCSS', 'Node.js', 'Git'],
+      github: '#',
+      live: 'https://shivenenterprises.com/',
+    },
+    {
+      title: 'Aditya Homoeopathic Clinic',
+      type: 'Client Project',
+      description: 'Clinic website with treatment information, appointment CTAs, and mobile-first layouts.',
+      images: [Aditya1, Aditya2, Aditya3],
+      tags: ['Next.js', 'Tailwind', 'PostCSS', 'Git'],
+      github: '#',
+      live: 'https://adityahomoeopathicclinic.com/',
+    },
     {
       title: 'E-Learning Platform',
       type: 'College Project',
@@ -53,8 +90,17 @@ const Projects = () => {
     },
   ], []);
 
+  // Ensure image index array matches number of projects
+  useEffect(() => {
+    setCurrentImageIndex(prev => {
+      if (prev.length === projects.length) return prev;
+      return Array(projects.length).fill(0);
+    });
+  }, [projects.length]);
+
   // Auto-slide images every 3 seconds
   useEffect(() => {
+    if (projects.length === 0 || currentImageIndex.length !== projects.length) return;
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndices => 
         prevIndices.map((index, projectIndex) => 
@@ -64,7 +110,7 @@ const Projects = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [projects]);
+  }, [projects, currentImageIndex.length]);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
@@ -138,9 +184,9 @@ const Projects = () => {
                       {/* Image Slider with AnimatePresence */}
                       <AnimatePresence mode="wait">
                         <motion.img
-                          key={`${project.title}-${currentImageIndex[index]}`}
-                          src={project.images[currentImageIndex[index]]}
-                          alt={`${project.title} - Image ${currentImageIndex[index] + 1}`}
+                          key={`${project.title}-${(currentImageIndex[index] ?? 0)}`}
+                          src={project.images[currentImageIndex[index] ?? 0]}
+                          alt={`${project.title} - Image ${(currentImageIndex[index] ?? 0) + 1}`}
                           initial={{ opacity: 0, x: 100 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -100 }}
@@ -162,7 +208,7 @@ const Projects = () => {
                               });
                             }}
                             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                              currentImageIndex[index] === imgIndex 
+                              (currentImageIndex[index] ?? 0) === imgIndex 
                                 ? 'bg-amber-400 w-8' 
                                 : 'bg-white/50 hover:bg-white/80'
                             }`}

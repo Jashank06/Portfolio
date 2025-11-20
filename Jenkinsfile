@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         DOCKER_REGISTRY = 'docker.io'
-        DOCKER_HUB_USERNAME = 'jashank06'  // ← CHANGE THIS to your Docker Hub username
+        DOCKER_HUB_USERNAME = 'jashank06'  
         DOCKER_IMAGE_FRONTEND = "${DOCKER_HUB_USERNAME}/portfolio-frontend"
         DOCKER_IMAGE_BACKEND = "${DOCKER_HUB_USERNAME}/portfolio-backend"
         DOCKER_TAG = "${env.BUILD_NUMBER}"
