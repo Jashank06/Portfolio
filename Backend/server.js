@@ -46,13 +46,17 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// MongoDB Connection (Optional - uncomment if using MongoDB)
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
-// .then(() => console.log('✅ MongoDB Connected'))
-// .catch((err) => console.error('❌ MongoDB Connection Error:', err));
+// MongoDB Connection
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('✅ MongoDB Connected'))
+  .catch((err) => console.error('❌ MongoDB Connection Error:', err));
+} else {
+  console.log('⚠️ MongoDB URI not provided, running without database');
+}
 
 // Contact Schema (if using MongoDB)
 const contactSchema = new mongoose.Schema({
