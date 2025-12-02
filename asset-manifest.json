@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "https://jashank.dpdns.org/static/css/main.6b131aa6.css",
-    "main.js": "https://jashank.dpdns.org/static/js/main.44cc4da4.js",
+    "main.css": "https://jashank.dpdns.org/static/css/main.c43d838b.css",
+    "main.js": "https://jashank.dpdns.org/static/js/main.25616360.js",
     "static/js/453.eb570f4f.chunk.js": "https://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js",
     "static/media/Atola1.png": "https://jashank.dpdns.org/static/media/Atola1.d6c3b85a7340a62b2595.png",
     "static/media/E_learning2.png": "https://jashank.dpdns.org/static/media/E_learning2.843784e67cdae4a97dde.png",
@@ -28,12 +28,12 @@
     "static/media/profile.jpg": "https://jashank.dpdns.org/static/media/profile.82c9a4d630481790fd18.jpg",
     "static/media/profile1.jpg": "https://jashank.dpdns.org/static/media/profile1.983f0f90009d6aae5ec4.jpg",
     "index.html": "https://jashank.dpdns.org/index.html",
-    "main.6b131aa6.css.map": "https://jashank.dpdns.org/static/css/main.6b131aa6.css.map",
-    "main.44cc4da4.js.map": "https://jashank.dpdns.org/static/js/main.44cc4da4.js.map",
+    "main.c43d838b.css.map": "https://jashank.dpdns.org/static/css/main.c43d838b.css.map",
+    "main.25616360.js.map": "https://jashank.dpdns.org/static/js/main.25616360.js.map",
     "453.eb570f4f.chunk.js.map": "https://jashank.dpdns.org/static/js/453.eb570f4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b131aa6.css",
-    "static/js/main.44cc4da4.js"
+    "static/css/main.c43d838b.css",
+    "static/js/main.25616360.js"
   ]
 }
