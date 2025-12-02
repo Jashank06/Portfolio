@@ -237,6 +237,94 @@ const sendEmailNotification = async ({ name, email, subject, message }) => {
   }
 };
 
+// LeetCode Proxy Endpoint
+app.get('/api/leetcode/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
+    
+    const query = `
+      query getUserProfile($username: String!) {
+        allQuestionsCount {
+          difficulty
+          count
+        }
+        matchedUser(username: $username) {
+          username
+          profile {
+            realName
+            userAvatar
+            ranking
+          }
+          submitStats {
+            acSubmissionNum {
+              difficulty
+              count
+            }
+          }
+          problemsSolvedBeatsStats {
+            difficulty
+            percentage
+          }
+          submissionCalendar
+        }
+        recentSubmissionList(username: $username, limit: 6) {
+          title
+          titleSlug
+          timestamp
+          statusDisplay
+          lang
+        }
+      }
+    `;
+
+    const response = await fetch('https://leetcode.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin',
+        'Referer': 'https://leetcode.com/',
+        'Origin': 'https://leetcode.com'
+      },
+      body: JSON.stringify({ query, variables: { username: 'Jashank_06' } })
+    });
+
+    if (!response.ok) {
+      console.log('LeetCode API Response Status:', response.status);
+      console.log('LeetCode API Response Headers:', response.headers);
+      const errorText = await response.text();
+      console.log('LeetCode API Error Response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const data = await response.json();
+    
+    if (data.errors) {
+      console.log('LeetCode GraphQL Errors:', data.errors);
+      throw new Error(data.errors[0].message);
+    }
+
+    console.log('Successfully fetched LeetCode data for:', username);
+    res.json({ success: true, data: data.data });
+  } catch (error) {
+    console.error('LeetCode API Error:', error);
+    
+    // Return a more informative error
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch LeetCode data - API may require authentication',
+      error: error.message,
+      fallback: true // Indicate that fallback should be used
+    });
+  }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
