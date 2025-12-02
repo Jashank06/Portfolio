@@ -12,7 +12,7 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50);
       
       // Track active section
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'profiles', 'contact'];
       const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {
@@ -36,6 +36,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Profiles', href: '#profiles' },
     { name: 'Contact', href: '#contact' },
   ];
 

@@ -23,6 +23,9 @@ import Shiven3 from '../assets/Shiven3.png';
 import Aditya1 from '../assets/Aditya1.png';
 import Aditya2 from '../assets/Aditya2.png';
 import Aditya3 from '../assets/Aditya3.png';
+import NFC1 from '../assets/NFC1.png';
+import NFC2 from '../assets/NFC2.png';
+import NFC3 from '../assets/NFC3.png';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -40,7 +43,7 @@ const Projects = () => {
       description: 'A contractor CRM platform for managing leads, contacts, jobs, quotes, and invoices with a clean and responsive UI.',
       images: [Atola1, Atola2, Atola3],
       tags: ['React', 'Tailwind', 'Node.js', 'Express.js', 'MongoDB', 'Git'],
-      github: '#',
+      github: null,
       live: 'https://atola.in/',
     },
     {
@@ -49,7 +52,7 @@ const Projects = () => {
       description: 'Corporate website with service pages, contact flows, and performance-optimized frontend for better SEO and UX.',
       images: [Shiven1, Shiven2, Shiven3],
       tags: ['Next.js', 'Tailwind', 'PostCSS', 'Node.js', 'Git'],
-      github: '#',
+      github: null,
       live: 'https://shivenenterprises.com/',
     },
     {
@@ -58,8 +61,17 @@ const Projects = () => {
       description: 'Clinic website with treatment information, appointment CTAs, and mobile-first layouts.',
       images: [Aditya1, Aditya2, Aditya3],
       tags: ['Next.js', 'Tailwind', 'PostCSS', 'Git'],
-      github: '#',
+      github: null,
       live: 'https://adityahomoeopathicclinic.com/',
+    },
+    {
+      title: 'NFC Cards',
+      type: 'Client Project',
+      description: 'Digital and physical NFC visiting cards platform with customizable templates, QR code integration, and nationwide delivery. Enables professionals to share contact information, portfolio, and social links instantly with a single tap.',
+      images: [NFC1, NFC2, NFC3],
+      tags: ['Next.js', 'Tailwind', 'PostCSS', 'Node.js', 'Git'],
+      github: null,
+      live: 'https://shivenfccaards.com/',
     },
     {
       title: 'E-Learning Platform',
@@ -68,7 +80,7 @@ const Projects = () => {
       images: [Elearning1, Elearning2, Elearning3],
       tags: ['React', 'Tailwind', 'Node.js', 'Express.js', 'MongoDB', 'Jenkins', 'Docker', 'AWS', 'Git'],
       github: 'https://github.com/Jashank06/Edutainment.git',
-      live: 'http://13.60.241.214/',
+      live: 'https://jashank06.github.io/Edutainment/#',
     },
     {
       title: 'Salon Management System',
@@ -231,16 +243,18 @@ const Projects = () => {
                         >
                           <FaExternalLinkAlt size={16} className="sm:text-xl" />
                         </motion.a>
-                        <motion.a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.1, rotate: -5 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/50 transition-shadow"
-                        >
-                          <FaGithub size={18} className="sm:text-2xl" />
-                        </motion.a>
+                        {project.github && (
+                          <motion.a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.1, rotate: -5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-amber-500/50 transition-shadow"
+                          >
+                            <FaGithub size={18} className="sm:text-2xl" />
+                          </motion.a>
+                        )}
                       </div>
                       
                       {/* Decorative Corner Element */}
@@ -331,17 +345,19 @@ const Projects = () => {
                         <FaExternalLinkAlt className="text-sm sm:text-base" />
                         <span>View Live</span>
                       </motion.a>
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05, x: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white border-2 border-amber-400 text-amber-600 rounded-full font-semibold hover:bg-amber-50 transition-all duration-300 shadow-lg text-sm sm:text-base"
-                      >
-                        <FaGithub className="text-sm sm:text-base" />
-                        <span>Source Code</span>
-                      </motion.a>
+                      {project.github && (
+                        <motion.a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05, x: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white border-2 border-amber-400 text-amber-600 rounded-full font-semibold hover:bg-amber-50 transition-all duration-300 shadow-lg text-sm sm:text-base"
+                        >
+                          <FaGithub className="text-sm sm:text-base" />
+                          <span>Source Code</span>
+                        </motion.a>
+                      )}
                     </motion.div>
                   </motion.div>
                 </div>
